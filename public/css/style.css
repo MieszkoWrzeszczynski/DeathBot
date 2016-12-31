@@ -1,0 +1,180 @@
+/* RESET */
+html{
+	font-size: 1.5em;
+	color: #222;
+}
+
+body{
+	padding: 1rem;
+	padding-bottom: 2rem;
+}
+
+* {
+	box-sizing: border-box;
+	line-height: 1rem;
+	font-size: 0.66666rem;
+	margin:0;
+
+}
+
+p, ul, li{
+	max-width: 32rem;
+}
+
+ul, ol{
+	padding-left: 2rem;
+}
+
+p + p{
+	margin-top: 1rem;
+}
+
+img{
+	vertical-align:bottom;
+}
+
+h1, h2, h3{
+	margin-top: 1rem;
+	line-height:2rem;
+	color: #333;
+}
+
+h1{
+	font-size:1.75rem;
+}
+
+h2{
+	font-size: 1.25rem;
+}
+
+
+input {
+	height:1.5rem;
+	margin: .25rem;
+	font-size: calc(2rem / 3);
+	padding: 0;
+	border: 1px solid #666;
+	border-radius: 2px;
+	padding: 0 calc(1rem / 3);
+	  box-sizing : border-box;
+}
+
+input[type="submit"]{
+	cursor: pointer;
+}
+
+
+/* MAIN CSS */
+
+body{
+	background:url('../img/background.jpg');
+}
+
+*{
+	font-family: 'Roboto', sans-serif;
+}
+
+main{
+	max-width: 40rem;
+	margin: 0 auto;
+	background:white;
+}
+
+header{
+	height: 8rem;
+	display: flex;
+	display: -ms-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	-ms-flex-direction: column;
+	-ms-justify-content: center;
+	-ms-align-items: center;
+}
+
+header img{
+	width: 4rem;
+    padding-bottom: 1rem;
+}
+
+
+h1{
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+	font-size: 2rem;
+	line-height: 2rem;
+	font-weight: 700;
+	color: white;
+}
+
+fieldset{
+	line-height: 1.5rem;
+    font-size: 1rem;
+    padding: 0;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border: none;
+    height: 10rem;
+	font-weight: 300;
+	margin-bottom: 1rem;
+}
+#dialogue{
+    overflow-y: scroll;
+    height: 8rem;
+}
+
+
+fieldset legend{
+	line-height: 2rem;
+	font-size: 1rem;
+	padding: 0;
+}
+
+form{
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+
+
+form button:hover {
+	background: #02D89C;
+
+}
+
+input, form button{
+	width:100%;
+	margin: 0;
+	height: 2rem;
+	margin-bottom: 1rem;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+form button{
+	background: #01A688;
+	color: white;
+	border: none;
+	outline: none;
+	transition: background 0.5s;
+	margin-bottom: 0.5rem;
+}
+
+fieldset .chat_msg{
+	position: relative;
+}
+
+fieldset .chat_msg img{
+	position: absolute;
+	top: -15px;
+}
+
+
+@media all and (max-width: 568px){
+
+	fieldset .chat_msg img {
+	    position: absolute;
+		top: 15px;
+	    right: 0;
+	}
+}

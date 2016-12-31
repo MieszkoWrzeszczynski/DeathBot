@@ -1,0 +1,7 @@
+! version = 2.0
+
++ [*] (urodził|urodziła|zmarł|zmarła|umarł|umarła) (się|on) * *
+- <call>getInfo <star3> <star4>  </call>
+
++ [*] (urodził|urodziła|zmarł|zmarła|umarł|umarła) * *
+- <call>getInfo <star2> <star3>  </call>
