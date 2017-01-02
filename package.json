@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": " browserify index.js -o public/js/bundle.js"
+    "lint": "eslint index.js",
+    "build": "browserify index.js -o public/js/bundle.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "install": "^0.8.4",
+    "jquery": "^3.1.1",
     "npm": "^4.0.5",
     "rivescript": "^1.17.1",
     "sparql-client-2": "^0.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-plugin-react": "^6.8.0"
   }
 }

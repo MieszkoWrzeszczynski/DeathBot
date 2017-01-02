@@ -18,12 +18,12 @@ function fetchPersonInfo(person,informationType) {
      return new rs.Promise(function (resolve, reject) {
          return client
            .query(SPARQL`
-                PREFIX  dbpedia-owl:  <http://dbpedia.org/ontology/>\
-                SELECT DISTINCT ?birthDate ?deathDate WHERE {\
-                ?x0 rdf:type foaf:Person.\
-                ?x0 rdfs:label ${person}@pl.\
-                ?x0 dbpedia-owl:birthDate ?birthDate.\
-                OPTIONAL {?x0 dbpedia-owl:deathDate ?deathDate.}\
+                PREFIX  dbpedia-owl:  <http://dbpedia.org/ontology/>
+                SELECT DISTINCT ?birthDate ?deathDate WHERE {
+                ?x0 rdf:type foaf:Person.
+                ?x0 rdfs:label ${person}@pl.
+                ?x0 dbpedia-owl:birthDate ?birthDate.
+                OPTIONAL {?x0 dbpedia-owl:deathDate ?deathDate.}
                 }`)
         .execute()
 	    .then(function(xhr, data) {
