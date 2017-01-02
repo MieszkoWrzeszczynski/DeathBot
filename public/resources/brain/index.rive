@@ -1,7 +1,13 @@
 ! version = 2.0
 
-+ [*] (urodził|urodziła|zmarł|zmarła|umarł|umarła) (się|on) * *
-- <call>getInfo <star3> <star4>  </call>
++ [*] (urodził|urodziła|urodzenia) (się|on) * *
+- <call>getBirthDate <star3> <star4> </call>
 
-+ [*] (urodził|urodziła|zmarł|zmarła|umarł|umarła) * *
-- <call>getInfo <star2> <star3>  </call>
++ [*] (urodził|urodził|urodzenia) * *
+- <call>getBirthDate <star2> <star3> </call>
+
++ [*] [na świat] (przyszedł|przyszła) [na świat] * *
+- <call>getBirthDate <star2> <star3> </call>
+
++ [*] (zmarł|zmarła|umarł|umarła|odeszła|odszedł|zginął|zginęła) * *
+- <call>getDeathDate <star2> <star3> </call>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple question answering system</title>
+<title>Simple question answering system</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,28 +9,24 @@
 </head>
 <body>
 	<header>
-			<img src="img/logo.png" alt="Weatherbot logo">
-			<h1>DeathBot</h1>
+		<img src="img/logo.png" alt="Weatherbot logo">
+		<h1>DeathBot</h1>
 	</header>
-
 	<main>
 		<fieldset>
 			<legend>Chat</legend>
 			<div id="dialogue">
-					<strong class='chat_msg'>DeathBot: </strong>Spytaj kiedy urodził się Nicola Tesla.
+				<div>
+                    <strong class='chat_msg'>DeathBot: </strong>Spytaj kiedy urodził się Adam Małysz.
+                </div>
 			</div>
 		</fieldset>
 		<form id="form">
-			<input type="text" name="message" id="message" placeholder="Jaka jest pogoda w ..." required>
+			<input type="text" name="message" id="message" placeholder="Kiedy urodził się ..." required>
 			<button type="submit">Send!</button>
-            <button type="button" id="voice-input">Tell me the question!</button>
-		</form>
-		<form>
-			<button id="save-logs">Zapisz logi!</button>
+            <button type="button" id="voice-input">Ask me the question!</button>
 		</form>
 	</main>
-
-
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="js/bundle.js"></script>
 </body>
