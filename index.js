@@ -1,8 +1,7 @@
 "use-strict";
-
 const {SparqlClient, SPARQL} = require("sparql-client-2");
-const RiveScript = require("rivescript");
 const $ = require("jquery");
+const RiveScript = require("rivescript");
 const rs = new RiveScript({utf8: true});
 
 rs.unicodePunctuation = new RegExp(/[.,!?;:]/g);
@@ -43,7 +42,7 @@ function fetchPersonInfo(person,informationType) {
         		resolve("Wydaje mi się, że podana osoba żyje.");
         	else (err.message === "xhr.results.bindings[0] is undefined");
         	resolve("Wydaje mi się, że podana osoba nie istnieje.");
-});
+        });
 	});
 }
 
@@ -60,13 +59,55 @@ String.prototype.capitalize = function() {
 	return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
+
+function convertSurnameToBaseForm(surname){
+    const postfixes = [{fix:"iej",end:"a"},{fix:"ej",end:"a"},{fix:"ego",end:""},{fix:"y",end:"a"},{fix:"a",end:""}]
+
+    for (let postfix of postfixes) {
+        if(surname.endsWith(postfix.fix)){
+            return  surname.slice(0,surname.lastIndexOf(postfix.fix)) + postfix.end;
+        }
+    }
+}
+
+function convertNameToBaseForm(name){
+    if(name[name.length -1] == "a"){
+        return name.slice(0,name.length -1)
+    }
+
+    if(name[name.length -1] == "i"){
+        return name.slice(0,name.length -1) + "a"
+    }
+}
+
+function convertInputToPerson(name,surname){
+    const new_name = convertNameToBaseForm(name) || name;
+    const new_surname = convertSurnameToBaseForm(surname) || surname;
+    return `${new_name.capitalize()} ${new_surname.capitalize()}`;
+}
+
 rs.setSubroutine("getBirthDate",function(rs,args){
-	const person  = args[0].capitalize() + " " +args[1].capitalize();
+	const person  = `${args[0].capitalize()} ${args[1].capitalize()}`;
+    console.log(person);
 	return fetchPersonInfo(person,"birthDate");
 });
 
 rs.setSubroutine("getDeathDate",function(rs,args){
-	const person  = args[0].capitalize() + " " +args[1].capitalize();
+	const person  = `${args[0].capitalize()} ${args[1].capitalize()}`;
+    console.log(person);
+	return fetchPersonInfo(person,"deathDate");
+});
+
+rs.setSubroutine("getBirthDateConvert",function(rs,args){
+	const person  = convertInputToPerson(args[0],args[1])
+    console.log(person);
+	return fetchPersonInfo(person,"birthDate");
+});
+
+
+rs.setSubroutine("getDeathDateConvert",function(rs,args){
+    const person  = convertInputToPerson(args[0],args[1])
+    console.log(person);
 	return fetchPersonInfo(person,"deathDate");
 });
 
@@ -85,7 +126,8 @@ function sendMessage (input) {
 	$("#dialogue").append("<div class='chat_msg'><strong class='user'>Ty:</strong> " + text + "</div>");
 
 	try {
-    	rs.replyAsync("soandso", text, this).then(function(reply) {
+    	rs.replyAsync("bot", text, this).then(function(reply) {
+            responsiveVoice.speak(reply,"Polish Female");
     		$("#dialogue").append("<div class='chat_msg'><strong class='bot'>DeathBot: </strong>" + reply + "</div>");
     	    $("#dialogue").scrollTop($("#dialogue")[0].scrollHeight);
     	});

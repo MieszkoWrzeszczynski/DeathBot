@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Simple question answering system</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+	<title>Simple question answering system</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin-ext" rel="stylesheet">
 </head>
 <body>
 	<header>
@@ -17,16 +17,18 @@
 			<legend>Chat</legend>
 			<div id="dialogue">
 				<div>
-                    <strong class='chat_msg'>DeathBot: </strong>Spytaj kiedy urodził się Adam Małysz.
-                </div>
+					<strong class='chat_msg'>DeathBot: </strong>Spytaj kiedy urodził się Adam Małysz.
+				</div>
 			</div>
 		</fieldset>
 		<form id="form">
 			<input type="text" name="message" id="message" placeholder="Kiedy urodził się ..." required>
 			<button type="submit">Send!</button>
-            <button type="button" id="voice-input">Ask me the question!</button>
+			<button type="button" id="voice-input">Ask me the question!</button>
 		</form>
 	</main>
-    <script src="js/bundle.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+	<script src="js/bundle.js"></script>
 </body>
 </html>

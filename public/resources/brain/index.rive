@@ -1,13 +1,27 @@
 ! version = 2.0
 
-+ [*] (urodził|urodziła|urodzenia) (się|on) * *
++ [*] (urodził|urodziła) (się|on) * *
 - <call>getBirthDate <star3> <star4> </call>
 
-+ [*] (urodził|urodził|urodzenia) * *
++ [*] (urodził|urodził) * *
 - <call>getBirthDate <star2> <star3> </call>
 
-+ [*] [na świat] (przyszedł|przyszła) [na świat] * *
-- <call>getBirthDate <star2> <star3> </call>
++ [*] (na świat|na świecie|[*]) (przyszedł|przyszła|pojawił) (się|na świat|na świecie|[*]) * *
+- <call>getBirthDate <star4> <star5> </call>
 
 + [*] (zmarł|zmarła|umarł|umarła|odeszła|odszedł|zginął|zginęła) * *
 - <call>getDeathDate <star2> <star3> </call>
+
++ [*] (zmarł|zmarła|umarł|umarła|odeszła|odszedł|zginął|zginęła) od nas * *
+- <call>getDeathDate <star2> <star3> </call>
+
++ [*] (datę|data) (urodzenia|narodzin) * *
+- <call>getBirthDateConvert <star3> <star4> </call>
+
++ [*] (datę|data) (śmierci|zgonu|odejścia) * *
+- <call>getDeathDateConvert <star3> <star4> </call>
+
++ *
+- Nie zrozumiałem polecenia
+- Ponów pytanie
+- Cooooo?
