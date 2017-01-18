@@ -2,6 +2,8 @@
 const {SparqlClient, SPARQL} = require("sparql-client-2");
 const $ = require("jquery");
 const RiveScript = require("rivescript");
+const moment = require('moment');
+require('moment/locale/pl');
 const rs = new RiveScript({utf8: true});
 
 rs.unicodePunctuation = new RegExp(/[.,!?;:]/g);
@@ -15,6 +17,19 @@ const client =
 });
 
 function fetchPersonInfo(person,informationType) {
+    var women = false;
+    var birthVerb = "urodził";
+    var deathVerb = "zmarł";
+
+    if(person[person.length -1] == "a"){
+        women = true;
+    }
+
+    if(women == true){
+        birthVerb = "urodziła";
+        deathVerb = "zmarła"
+    }
+
 	return new rs.Promise(function(resolve) {
 		return client
             .query(SPARQL`
@@ -28,10 +43,18 @@ function fetchPersonInfo(person,informationType) {
         .execute()
         .then(function(xhr) {
         	if(informationType === "birthDate"){
-        		resolve("Data urodzenia: " + xhr.results.bindings["0"].birthDate.value);
+                var birthDate = xhr.results.bindings["0"].birthDate.value;
+                birthDate = moment(birthDate).format('YYYY-MM-DD');
+                birthDate = moment(birthDate).format('LL')
+
+        		resolve(person + birthVerb + " się " + birthDate);
         	}
         	else if(informationType === "deathDate"){
-        		resolve("Data śmierci: " + xhr.results.bindings["0"].deathDate.value);
+                var deathDate = xhr.results.bindings["0"].deathDate.value;
+                deathDate = moment(deathDate).format('YYYY-MM-DD');
+                deathDate = moment(deathDate).format('LL')
+
+                resolve(person + deathVerb  + deathDate);
         	}
         	else {
         		resolve("Data urodzenia: " + xhr.results.bindings["0"].birthDate.value + " Data śmierci: " + xhr.results.bindings["0"].deathDate.value);
